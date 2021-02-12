@@ -13,4 +13,14 @@ class CalculatorTest extends TestCase
 
         self::assertSame(25, $calculator->add([5, 20]));
     }
+
+    public function testExceptionWhenParamsLessValueOne()
+    {
+        $calculator = new Calculator();
+
+        $this->expectException(\RuntimeException::class);
+        $this->expectExceptionMessage('operand must be greater than zero');
+
+        $calculator->add([0]);
+    }
 }
